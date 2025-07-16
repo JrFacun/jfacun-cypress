@@ -1,0 +1,15 @@
+[
+  {
+    "firstName": "John",
+    "lastName": "Doe",
+    "address": "123 Main St",
+    "city": "Anytown",
+    "state": "CA",
+    "zipCode": "12345",
+    "phoneNumber": "5551234567",
+    "ssn": "123456789",
+    "username": "johndoe101",
+    "password": "passw0rd",
+    "confirmPassword": "passw0rd"
+  }
+]

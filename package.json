@@ -1,0 +1,29 @@
+{
+  "name": "jfacun-cypress",
+  "version": "1.0.0",
+  "description": "Cypress Fundamentals with CI/CD Pipeline using GitHub Actions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JrFacun/jfacun-cypress.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JrFacun/jfacun-cypress/issues"
+  },
+  "homepage": "https://github.com/JrFacun/jfacun-cypress#readme",
+  "devDependencies": {
+    "cypress": "^14.5.0",
+    "cypress-downloadfile": "^1.2.4",
+    "cypress-mochawesome-reporter": "^4.0.0"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.9.0",
+    "cypress-plugin-api": "^2.11.2"
+  }
+}
