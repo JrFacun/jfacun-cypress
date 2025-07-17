@@ -1,15 +1,17 @@
 ///<reference types="cypress" />
 
 import {userData } from "../../../support/utils/parabankUtils";
-
+import '../../../support/commands/paraBankCommands';
 // import { slowCypressDown } from 'cypress-slow-down';
 
 // slowCypressDown(500, 100);
-
-describe('Register Test Suite', () => {
+``
+describe('Register Test Suite',{testIsolation : false}, () => {
     beforeEach(() => {
         // Visit the registration page before each test
         cy.visit('https://parabank.parasoft.com/parabank/register.htm');
+        cy.takeScreenshot('Check the URL if it redirects'); 
+
     })
     it('Verify Registration Page Elements', () => {
         // Verify URL
@@ -26,11 +28,11 @@ describe('Register Test Suite', () => {
 
         //Verify Hamburger Menu
         cy.get('.Solutions').should('have.text', 'Solutions');
-        cy.get('.leftmenu > :nth-child(2) > a').should('have.text', 'About Us');
-        cy.get('.leftmenu > :nth-child(3) > a').should('have.text', 'Services');
-        cy.get('.leftmenu > :nth-child(4) > a').should('have.text', 'Products');
-        cy.get('.leftmenu > :nth-child(5) > a').should('have.text', 'Locations');
-        cy.get('.leftmenu > :nth-child(6) > a').should('have.text', 'Admin Page');
+        cy.get('.leftmenu > :nth-child(2) > a').should('have.text', 'About Us').and('not.be.disabled');
+        cy.get('.leftmenu > :nth-child(3) > a').should('have.text', 'Services').and('not.be.disabled');
+        cy.get('.leftmenu > :nth-child(4) > a').should('have.text', 'Products').and('not.be.disabled');
+        cy.get('.leftmenu > :nth-child(5) > a').should('have.text', 'Locations').and('not.be.disabled');
+        cy.get('.leftmenu > :nth-child(6) > a').should('have.text', 'Admin Page').and('not.be.disabled');
 
 
         // Verify elements on the registration page
@@ -49,19 +51,20 @@ describe('Register Test Suite', () => {
         cy.get(':nth-child(12) > [align="right"] > b').should('have.text', 'Confirm:');
 
         //Verify input fields
-        cy.get('input[id="customer.firstName"]').should('be.visible');
-        cy.get('input[id="customer.lastName"]').should('be.visible');
-        cy.get('input[id="customer.address.street"]').should('be.visible');
-        cy.get('input[id="customer.address.city"]').should('be.visible');
-        cy.get('input[id="customer.address.state"]').should('be.visible');
-        cy.get('input[id="customer.address.zipCode"]').should('be.visible');
-        cy.get('input[id="customer.phoneNumber"]').should('be.visible');
-        cy.get('input[id="customer.ssn"]').should('be.visible');
-        cy.get('input[id="customer.username"]').should('be.visible');
-        cy.get('input[id="customer.password"]').should('be.visible');
-        cy.get('input[id="repeatedPassword"]').should('be.visible');
+        cy.get('input[id="customer.firstName"]').should('be.visible').and('not.be.disabled');
+        cy.get('input[id="customer.lastName"]').should('be.visible').and('not.be.disabled');
+        cy.get('input[id="customer.address.street"]').should('be.visible').and('not.be.disabled');
+        cy.get('input[id="customer.address.city"]').should('be.visible').and('not.be.disabled');
+        cy.get('input[id="customer.address.state"]').should('be.visible').and('not.be.disabled');
+        cy.get('input[id="customer.address.zipCode"]').should('be.visible').and('not.be.disabled');
+        cy.get('input[id="customer.phoneNumber"]').should('be.visible').and('not.be.disabled');
+        cy.get('input[id="customer.ssn"]').should('be.visible').and('not.be.disabled');
+        cy.get('input[id="customer.username"]').should('be.visible').and('not.be.disabled');
+        cy.get('input[id="customer.password"]').should('be.visible').and('not.be.disabled');
+        cy.get('input[id="repeatedPassword"]').should('be.visible').and('not.be.disabled');
 
         cy.get('input[value="Register"]').should('be.visible');
+        cy.takeScreenshot('Register Form'); 
 
     })
     //Verify Registration with valid data using fixture
@@ -103,11 +106,41 @@ describe('Register Test Suite', () => {
     cy.get('input[id="customer.username"]').should('be.visible').type(users.username);
     cy.get('input[id="customer.password"]').should('be.visible').type(users.password);
     cy.get('input[id="repeatedPassword"]').should('be.visible').type(users.Repeatedpassword);
+
+
+    cy.takeScreenshot('Before Submitting Details'); 
+
     cy.get('[colspan="2"] > .button').should('be.visible').and('contain', 'Register').click();
     cy.url().should('include', '/register.htm');
-    cy.get('.title').should('contain', 'Welcome ' + users.username);
+    cy.get('h1.title').should('contain', 'Welcome ' + users.username);
     cy.get('#rightPanel > p').should('contain', 'Your account was created successfully. You are now logged in.');
 
+    cy.takeScreenshot('Successful Registration'); 
+
    })
+    it('Verify for Required Blank Fields', () => {
+
+
+        // Click the Register button without filling any fields
+        cy.get('[colspan="2"] > .button').click();
+
+        // Assert that each field shows the correct error message
+        cy.get('#customer\\.firstName\\.errors').should('contain', 'First name is required.');
+        cy.get('#customer\\.lastName\\.errors').should('contain', 'Last name is required.');
+        cy.get('#customer\\.address\\.street\\.errors').should('contain', 'Address is required.');
+        cy.get('#customer\\.address\\.city\\.errors').should('contain', 'City is required.');
+        cy.get('#customer\\.address\\.state\\.errors').should('contain', 'State is required.');
+        cy.get('#customer\\.address\\.zipCode\\.errors').should('contain', 'Zip Code is required.');
+        cy.get('#customer\\.ssn\\.errors').should('contain', 'Social Security Number is required.');
+        cy.get('#customer\\.username\\.errors').should('contain', 'Username is required.');
+        cy.get('#customer\\.password\\.errors').should('contain', 'Password is required.');
+        cy.get('#repeatedPassword\\.errors').should('contain', 'Password confirmation is required.');
+        
+        cy.takeScreenshot('Error required fields'); 
+
+        // Verify still on registration page
+        cy.url().should('include', '/register.htm');
+    });
+
 
 })
