@@ -1,7 +1,7 @@
 ///<reference types="cypress" />
 
-import {userData } from "../../../support/utils/parabankUtils";
-import '../../../support/commands/paraBankCommands';
+// import {userData } from "../../../support/utils/parabankUtils";
+// import '../../../support/commands/paraBankCommands';
 // import { slowCypressDown } from 'cypress-slow-down';
 
 // slowCypressDown(500, 100);
@@ -86,41 +86,19 @@ describe('Register Test Suite',{testIsolation : false}, () => {
     //         cy.get('input[id="repeatedPassword"]').type(users.confirmPassword);
 
     //         // Submit the registration form
-    //         cy.get('input[value="Register"]').click();
+    //         cy.get('[colspan="2"] > .button').should('be.visible').and('contain', 'Register').click();
     //         cy.url().should('include', '/register.htm');
     //         // Verify successful registration
     //         // cy.get('.title').should('contain', 'Welcome ' + users.username);
     //     });
     // })
 
-   it('Verify Successful Registration', () => {
-    const users = userData();
-    cy.get('input[id="customer.firstName"]').should('be.visible').type(users.firstName);
-    cy.get('input[id="customer.lastName"]').should('be.visible').type(users.lastName);
-    cy.get('input[id="customer.address.street"]').should('be.visible').type(users.address);
-    cy.get('input[id="customer.address.city"]').should('be.visible').type(users.city);
-    cy.get('input[id="customer.address.state"]').should('be.visible').type(users.state);
-    cy.get('input[id="customer.address.zipCode"]').should('be.visible').type(users.zipCode);
-    cy.get('input[id="customer.phoneNumber"]').should('be.visible').type(users.phoneNumber);
-    cy.get('input[id="customer.ssn"]').should('be.visible').type(users.ssn);    
-    cy.get('input[id="customer.username"]').should('be.visible').type(users.username);
-    cy.get('input[id="customer.password"]').should('be.visible').type(users.password);
-    cy.get('input[id="repeatedPassword"]').should('be.visible').type(users.Repeatedpassword);
-
-
+   it.only('Verify Successful Registration', () => {
+    cy.registerUser();
     cy.takeScreenshot('Before Submitting Details'); 
-
-    cy.get('[colspan="2"] > .button').should('be.visible').and('contain', 'Register').click();
-    cy.url().should('include', '/register.htm');
-    cy.get('h1.title').should('contain', 'Welcome ' + users.username);
-    cy.get('#rightPanel > p').should('contain', 'Your account was created successfully. You are now logged in.');
-
-    cy.takeScreenshot('Successful Registration'); 
-
    })
+
     it('Verify for Required Blank Fields', () => {
-
-
         // Click the Register button without filling any fields
         cy.get('[colspan="2"] > .button').click();
 

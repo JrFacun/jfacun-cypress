@@ -4,7 +4,6 @@
   "description": "Cypress Fundamentals with CI/CD Pipeline using GitHub Actions",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "saucedemo-suite-headed": "npx cypress run --spec 'cypress/e2e/features/Saucedemo/Success_login.cy.js,cypress/e2e/features/Saucedemo/Unsuccessful_login.cy.js' --browser chrome --headed",
     "saucedemo-suite-headless": "npx cypress run --spec 'cypress/e2e/features/Saucedemo/Success_login.cy.js,cypress/e2e/features/Saucedemo/Unsuccessful_login.cy.js'",
     "parabank-suite-headed": "npx cypress run --spec 'cypress/e2e/features/Parabank/register.cy.js' --browser chrome --headed",
