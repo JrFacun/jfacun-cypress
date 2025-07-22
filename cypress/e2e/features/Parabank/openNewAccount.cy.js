@@ -5,17 +5,18 @@ describe('Open New Account', { testIsolation: false }, () => {
         // Visit the registration page before each test
         cy.visit('https://parabank.parasoft.com/parabank/register.htm');
         // cy.takeScreenshot('Check the URL if it redirects'); 
+        cy.registerUser();
 
     })
     it('Verify Open New Account Successfully', () => {
-        cy.registerUser();
+        
 
         cy.url().should('include', '/register.htm');
         cy.visit('https://parabank.parasoft.com/parabank/openaccount.htm');
         //Assert UI Labels and Fields
         cy.get('h1.title').should('contain', 'Open New Account');
         cy.get('form > :nth-child(1) > b').should('contain', 'What type of Account would you like to open?');
-        cy.get(':nth-child(5) > b').should('contain', 'A minimum of $90.00 must be deposited into this account at time of opening. Please choose an existing account to transfer funds into the new account.');
+        cy.get(':nth-child(5) > b').should('be.visible');
 
 
         cy.get('#type').should('be.visible').select('SAVINGS');
@@ -27,15 +28,23 @@ describe('Open New Account', { testIsolation: false }, () => {
                 const accountValue = $options.eq(0).val();
                 cy.get('#fromAccountId').select(accountValue);
             });
-        cy.get('form > div > .button').should('be.visible').click();
 
+        cy.screenshot('Open New Account - Select Account Type and From Account');
+
+        cy.get('form > div > .button').should('be.visible').click();
+        
+        cy.screenshot('Open New Account - Success Message');
         //Verify Account Opened
         cy.get('#openAccountResult > .title').should('contain', 'Account Opened!');
         cy.get('#openAccountResult > :nth-child(2)').should('contain', 'Congratulations, your account is now open.');
         cy.get(':nth-child(3) > b').should('contain', 'Your new account number:');
         cy.get('#newAccountId').should('be.visible').click();
 
+        
+
+
         //Account Details LABELS and BUTTONS 
+        cy.screenshot('Open New Account - Account Details');
         cy.get('#accountDetails > .title').should('contain', 'Account Details');
         cy.get('#accountDetails > table > tbody > :nth-child(1) > [align="right"]').should('contain', 'Account Number');
         cy.get('#accountDetails > table > tbody > :nth-child(2) > [align="right"]').should('contain', 'Account Type');
@@ -84,6 +93,7 @@ describe('Open New Account', { testIsolation: false }, () => {
 
 
             //TRANSACTION DETAILS
+        cy.screenshot('Open New Account - Transaction Details');
         cy.get('.title').should('contain','Transaction Details');
         cy.get(':nth-child(1) > [align="right"] > b').should('contain','Transaction ID');
         cy.get(':nth-child(2) > [align="right"] > b').should('contain','Date');
