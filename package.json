@@ -6,8 +6,12 @@
   "scripts": {
     "saucedemo-suite-headed": "npx cypress run --spec 'cypress/e2e/features/Saucedemo/Success_login.cy.js,cypress/e2e/features/Saucedemo/Unsuccessful_login.cy.js' --browser chrome --headed",
     "saucedemo-suite-headless": "npx cypress run --spec 'cypress/e2e/features/Saucedemo/Success_login.cy.js,cypress/e2e/features/Saucedemo/Unsuccessful_login.cy.js'",
-    "parabank-suite-headed": "npx cypress run --spec 'cypress/e2e/features/Parabank/register.cy.js' --browser chrome --headed",
-    "parabank-suite-headless": "npx cypress run --spec 'cypress/e2e/features/Parabank/register.cy.js'"
+    "parabank-register-headed": "npx cypress run --spec 'cypress/e2e/features/Parabank/register.cy.js,cypress/e2e/features/Parabank/Logout.cy.js' --browser chrome --headed",
+    "parabank-register-headless": "npx cypress run --spec 'cypress/e2e/features/Parabank/register.cy.js,cypress/e2e/features/Parabank/Logout.cy.js'",
+    "parabank-open-account-headed": "npx cypress run --spec 'cypress/e2e/features/Parabank/openNewAccount.cy.js' --browser chrome --headed",
+    "parabank-open-account-headless": "npx cypress run --spec 'cypress/e2e/features/Parabank/openNewAccount.cy.js'",
+    "parabank-update-contact-headed": "npx cypress run --spec 'cypress/e2e/features/Parabank/updateContactInfo.cy.js' --browser chrome --headed",
+    "parabank-update-contact-headless": "npx cypress run --spec 'cypress/e2e/features/Parabank/updateContactInfo.cy.js'"
     
   },
   "repository": {
