@@ -18,25 +18,8 @@ describe('Register Test Suite', { testIsolation: false }, () => {
     it('Verify Registration Page Elements', () => {
         // Verify URL
         cy.url().should('include', '/register.htm');
-
-        // // Verify Company Logo
-        // cy.get('.logo').should('be.visible');
-        // cy.get('.caption').should('contain', 'Experience the difference');
-        // cy.get('.admin').should('be.visible');
-        // cy.get('#headerPanel').should('be.visible');
-        // cy.get('.home > a').should('be.visible');
-        // cy.get('.aboutus > a').should('be.visible');
-        // cy.get('.contact > a').should('be.visible');
-
-        // //Verify Hamburger Menu
-        // cy.get('.Solutions').should('have.text', 'Solutions');
-        // cy.get('.leftmenu > :nth-child(2) > a').should('have.text', 'About Us').and('not.be.disabled');
-        // cy.get('.leftmenu > :nth-child(3) > a').should('have.text', 'Services').and('not.be.disabled');
-        // cy.get('.leftmenu > :nth-child(4) > a').should('have.text', 'Products').and('not.be.disabled');
-        // cy.get('.leftmenu > :nth-child(5) > a').should('have.text', 'Locations').and('not.be.disabled');
-        // cy.get('.leftmenu > :nth-child(6) > a').should('have.text', 'Admin Page').and('not.be.disabled');
-
         regPage.verifyHeaderAndMenus();
+
         regPage.getTitle().should('contain', 'Signing up is easy!');
         regPage.getDescription().should(
             'have.text',
@@ -56,6 +39,25 @@ describe('Register Test Suite', { testIsolation: false }, () => {
         regPage.getConfirmPasswordLabel().should('have.text', 'Confirm:');
 
         regPage.verifyAllInputsAreVisibleAndEnabled();
+
+        cy.takeScreenshot('Register Form');
+
+          // // Verify Company Logo
+        // cy.get('.logo').should('be.visible');
+        // cy.get('.caption').should('contain', 'Experience the difference');
+        // cy.get('.admin').should('be.visible');
+        // cy.get('#headerPanel').should('be.visible');
+        // cy.get('.home > a').should('be.visible');
+        // cy.get('.aboutus > a').should('be.visible');
+        // cy.get('.contact > a').should('be.visible');
+
+        // //Verify Hamburger Menu
+        // cy.get('.Solutions').should('have.text', 'Solutions');
+        // cy.get('.leftmenu > :nth-child(2) > a').should('have.text', 'About Us').and('not.be.disabled');
+        // cy.get('.leftmenu > :nth-child(3) > a').should('have.text', 'Services').and('not.be.disabled');
+        // cy.get('.leftmenu > :nth-child(4) > a').should('have.text', 'Products').and('not.be.disabled');
+        // cy.get('.leftmenu > :nth-child(5) > a').should('have.text', 'Locations').and('not.be.disabled');
+        // cy.get('.leftmenu > :nth-child(6) > a').should('have.text', 'Admin Page').and('not.be.disabled');
 
         // // Verify elements on the registration page
         // cy.get('h1.title').should('contain', 'Signing up is easy!');
@@ -86,38 +88,13 @@ describe('Register Test Suite', { testIsolation: false }, () => {
         // cy.get('input[id="repeatedPassword"]').should('be.visible').and('not.be.disabled');
 
         // cy.get('input[value="Register"]').should('be.visible');
-        cy.takeScreenshot('Register Form');
-
+        
     })
-    //Verify Registration with valid data using fixture
-    // it('Verify Successful Registration', () => {
-    //     // Load customer data from fixture
-    //     cy.fixture('user').then((user) => {
-    //        const users = user[0]
-    //         // Fill in the registration form
-    //         cy.get('input[id="customer.firstName"]').type(users.firstName);
-    //         cy.get('input[id="customer.lastName"]').type(users.lastName);
-    //         cy.get('input[id="customer.address.street"]').type(users.address);
-    //         cy.get('input[id="customer.address.city"]').type(users.city);
-    //         cy.get('input[id="customer.address.state"]').type(users.state);
-    //         cy.get('input[id="customer.address.zipCode"]').type(users.zipCode);
-    //         cy.get('input[id="customer.phoneNumber"]').type(users.phoneNumber);
-    //         cy.get('input[id="customer.ssn"]').type(users.ssn);
-    //         cy.get('input[id="customer.username"]').type(users.username);
-    //         cy.get('input[id="customer.password"]').type(users.password);
-    //         cy.get('input[id="repeatedPassword"]').type(users.confirmPassword);
-
-    //         // Submit the registration form
-    //         cy.get('[colspan="2"] > .button').should('be.visible').and('contain', 'Register').click();
-    //         cy.url().should('include', '/register.htm');
-    //         // Verify successful registration
-    //         // cy.get('.title').should('contain', 'Welcome ' + users.username);
-    //     });
-    // })
-
+  
     it('Verify Successful Registration', () => {
         cy.registerUser();
         cy.takeScreenshot('Before Submitting Details');
+        cy.takeScreenshot('Successful Registration'); 
     })
 
     it('Verify Password Confirmation Mismatch', () => {
@@ -153,19 +130,6 @@ describe('Register Test Suite', { testIsolation: false }, () => {
         // Click the Register button without filling any fields
         regPage.getRegisterButton().click();
 
-        // // Assert that each field shows the correct error message
-        // cy.get('#customer\\.firstName\\.errors').should('contain', 'First name is required.');
-        // cy.get('#customer\\.lastName\\.errors').should('contain', 'Last name is required.');
-        // cy.get('#customer\\.address\\.street\\.errors').should('contain', 'Address is required.');
-        // cy.get('#customer\\.address\\.city\\.errors').should('contain', 'City is required.');
-        // cy.get('#customer\\.address\\.state\\.errors').should('contain', 'State is required.');
-        // cy.get('#customer\\.address\\.zipCode\\.errors').should('contain', 'Zip Code is required.');
-        // cy.get('#customer\\.ssn\\.errors').should('contain', 'Social Security Number is required.');
-        // cy.get('#customer\\.username\\.errors').should('contain', 'Username is required.');
-        // cy.get('#customer\\.password\\.errors').should('contain', 'Password is required.');
-        // cy.get('#repeatedPassword\\.errors').should('contain', 'Password confirmation is required.');
-
-        
         // Assert that each field shows the correct error message
         regPage.getFirstNameError().should('contain', 'First name is required.');
         regPage.getLastNameError().should('contain', 'Last name is required.');
@@ -182,7 +146,45 @@ describe('Register Test Suite', { testIsolation: false }, () => {
 
         // Verify still on registration page
         cy.url().should('include', '/register.htm');
+
+         // // Assert that each field shows the correct error message
+        // cy.get('#customer\\.firstName\\.errors').should('contain', 'First name is required.');
+        // cy.get('#customer\\.lastName\\.errors').should('contain', 'Last name is required.');
+        // cy.get('#customer\\.address\\.street\\.errors').should('contain', 'Address is required.');
+        // cy.get('#customer\\.address\\.city\\.errors').should('contain', 'City is required.');
+        // cy.get('#customer\\.address\\.state\\.errors').should('contain', 'State is required.');
+        // cy.get('#customer\\.address\\.zipCode\\.errors').should('contain', 'Zip Code is required.');
+        // cy.get('#customer\\.ssn\\.errors').should('contain', 'Social Security Number is required.');
+        // cy.get('#customer\\.username\\.errors').should('contain', 'Username is required.');
+        // cy.get('#customer\\.password\\.errors').should('contain', 'Password is required.');
+        // cy.get('#repeatedPassword\\.errors').should('contain', 'Password confirmation is required.');
+
+        
     });
 
+      //Verify Registration with valid data using fixture
+    // it('Verify Successful Registration', () => {
+    //     // Load customer data from fixture
+    //     cy.fixture('user').then((user) => {
+    //        const users = user[0]
+    //         // Fill in the registration form
+    //         cy.get('input[id="customer.firstName"]').type(users.firstName);
+    //         cy.get('input[id="customer.lastName"]').type(users.lastName);
+    //         cy.get('input[id="customer.address.street"]').type(users.address);
+    //         cy.get('input[id="customer.address.city"]').type(users.city);
+    //         cy.get('input[id="customer.address.state"]').type(users.state);
+    //         cy.get('input[id="customer.address.zipCode"]').type(users.zipCode);
+    //         cy.get('input[id="customer.phoneNumber"]').type(users.phoneNumber);
+    //         cy.get('input[id="customer.ssn"]').type(users.ssn);
+    //         cy.get('input[id="customer.username"]').type(users.username);
+    //         cy.get('input[id="customer.password"]').type(users.password);
+    //         cy.get('input[id="repeatedPassword"]').type(users.confirmPassword);
 
+    //         // Submit the registration form
+    //         cy.get('[colspan="2"] > .button').should('be.visible').and('contain', 'Register').click();
+    //         cy.url().should('include', '/register.htm');
+    //         // Verify successful registration
+    //         // cy.get('.title').should('contain', 'Welcome ' + users.username);
+    //     });
+    // })
 })

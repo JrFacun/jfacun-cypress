@@ -10,7 +10,7 @@ describe('Open New Account', { testIsolation: false }, () => {
     })
     it('Verify User can Logout', () =>{
         cy.get('#leftPanel > ul > :nth-child(8) > a').should('be.visible').and('contain', 'Log Out').click();
-        cy.screenshot('User Logout - Clicked Log Out');
+        cy.takeScreenshot('User Logout - Clicked Log Out');
         cy.url().should('include', '/index.htm');
     })
 })

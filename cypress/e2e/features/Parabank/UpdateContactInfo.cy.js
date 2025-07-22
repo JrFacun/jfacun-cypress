@@ -40,12 +40,12 @@ describe('Open New Account', { testIsolation: false }, () => {
         cy.get('#customer\\.phoneNumber').clear().type('0929415123');
         cy.get('[colspan="2"] > .button').click();
 
-        cy.screenshot('Update Contact Info - Changed Phone Number');
+        cy.takeScreenshot('Update Contact Info - Changed Phone Number');
 
         cy.get('#updateProfileResult > .title').should('be.visible').and('contain', 'Profile Updated');
         cy.get('#updateProfileResult > p').should('be.visible').and('contain', 'Your updated address and phone number have been added to the system.');
 
-        cy.screenshot('Update Contact Info - Success Message');
+        cy.takeScreenshot('Update Contact Info - Success Message');
     })
 
     it('Verify that input fields does not accept Blank fields', () => {
@@ -63,7 +63,7 @@ describe('Open New Account', { testIsolation: false }, () => {
 
         cy.get('[colspan="2"] > .button').click();
 
-        cy.screenshot('Update Contact Info - Blank Fields');
+        cy.takeScreenshot('Update Contact Info - Blank Fields');
 
         cy.get('#firstName-error').should('contain', 'First name is required');
         cy.get('#lastName-error').should('contain', 'Last name is required');
@@ -72,6 +72,6 @@ describe('Open New Account', { testIsolation: false }, () => {
         cy.get('#state-error').should('contain', 'State is required');
         cy.get('#zipCode-error').should('contain', 'Zip Code is required');
 
-        cy.screenshot('Update Contact Info - Error Messages');
+        cy.takeScreenshot('Update Contact Info - Error Messages');
     })
 })
