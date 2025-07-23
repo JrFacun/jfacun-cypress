@@ -54,7 +54,7 @@ describe('Account Overview', { testIsolation: false }, () => {
 
         acctOverview.verifyAccountOverviewPage();
         acctOverview.verifyAccountFormFieldsAndDropdowns();
-        acctOverview.validateTransactionTableRows();
+        acctOverview.TransactionTableRows();
         acctOverview.verifyTransactionDetails();
 
     })

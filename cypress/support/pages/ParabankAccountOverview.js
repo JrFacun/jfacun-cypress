@@ -198,7 +198,7 @@ class AccountOverview {
 
 
     // Reusable method to validate transaction table rows
-   validateTransactionTableRows() {
+   TransactionTableRows() {
     cy.get('#transactionTable > tbody > tr').each(($row) => {
       cy.wrap($row).find('td:nth-child(1)').should('be.visible'); // Column 1
       // Column 2
@@ -209,6 +209,19 @@ class AccountOverview {
   }
   getTransactionTableRows() {
     return cy.get('tbody > tr');
+  }
+
+  FindTransactionTableRows() {
+    cy.get('#transactionBody > tr').each(($row) => {
+      cy.wrap($row).find('td:nth-child(1)').should('be.visible'); // Column 1
+      // Column 2
+      cy.wrap($row).find('td:nth-child(3)').should('be.visible'); // Column 3
+      cy.wrap($row).find('td:nth-child(4)').should('be.visible');
+      cy.wrap($row).find('td:nth-child(2)').should('be.visible').click();  // Column 4
+    });
+  }
+  getFindTransactionTableRows() {
+    return cy.get('#transactionBody > tr');
   }
 
   getTransactionDetailsLink() {

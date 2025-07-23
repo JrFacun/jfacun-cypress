@@ -3,7 +3,7 @@ import { userData } from '../utils/parabankUtils';
 import RegistrationPage from '../pages/ParabankRegistrationPage';
 import { billData } from '../utils/paraBank_Billpay_Faker';
 
-const users = new userData;
+
 const regPage = new RegistrationPage();
 const billPayInput = new billData;
 
@@ -23,6 +23,7 @@ Cypress.Commands.add('takeScreenshot', (label = 'screenshot') => {
 
 
 Cypress.Commands.add('registerUser', () => {
+  const users = new userData();
   regPage.getFirstNameInput().should('be.visible').type(users.firstName);
   regPage.getLastNameInput().should('be.visible').type(users.lastName);
   regPage.getAddressInput().should('be.visible').type(users.address);
