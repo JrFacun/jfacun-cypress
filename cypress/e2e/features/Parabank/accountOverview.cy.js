@@ -42,7 +42,7 @@ describe('Account Overview', { testIsolation: false }, () => {
         cy.get('#leftPanel > ul > :nth-child(2) > a').click();
 
        cy.get('#showOverview > .title').should('contain', 'Accounts Overview');
-         cy.get('tbody > tr').each(($row, index) => {
+         cy.get('tbody > tr').each(($row) => {
             cy.wrap($row).find('td:nth-child(1)').should('be.visible');
             cy.wrap($row).find('td:nth-child(2)').should('be.visible');
             cy.wrap($row).find('td:nth-child(3)').should('be.visible');

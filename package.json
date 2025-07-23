@@ -6,12 +6,31 @@
   "scripts": {
     "saucedemo-suite-headed": "npx cypress run --spec 'cypress/e2e/features/Saucedemo/Success_login.cy.js,cypress/e2e/features/Saucedemo/Unsuccessful_login.cy.js' --browser chrome --headed",
     "saucedemo-suite-headless": "npx cypress run --spec 'cypress/e2e/features/Saucedemo/Success_login.cy.js,cypress/e2e/features/Saucedemo/Unsuccessful_login.cy.js'",
+
     "parabank-register-headed": "npx cypress run --spec 'cypress/e2e/features/Parabank/register.cy.js,cypress/e2e/features/Parabank/Logout.cy.js' --browser chrome --headed",
     "parabank-register-headless": "npx cypress run --spec 'cypress/e2e/features/Parabank/register.cy.js,cypress/e2e/features/Parabank/Logout.cy.js'",
+
     "parabank-open-account-headed": "npx cypress run --spec 'cypress/e2e/features/Parabank/openNewAccount.cy.js' --browser chrome --headed",
     "parabank-open-account-headless": "npx cypress run --spec 'cypress/e2e/features/Parabank/openNewAccount.cy.js'",
+
     "parabank-update-contact-headed": "npx cypress run --spec 'cypress/e2e/features/Parabank/updateContactInfo.cy.js' --browser chrome --headed",
-    "parabank-update-contact-headless": "npx cypress run --spec 'cypress/e2e/features/Parabank/updateContactInfo.cy.js'"
+    "parabank-update-contact-headless": "npx cypress run --spec 'cypress/e2e/features/Parabank/updateContactInfo.cy.js'",
+    
+    "parabank-bill-pay-headed": "npx cypress run --spec 'cypress/e2e/features/Parabank/billPay.cy.js' --browser chrome --headed",
+    "parabank-bill-pay-headless": "npx cypress run --spec 'cypress/e2e/features/Parabank/billPay.cy.js'",
+
+    "parabank-transfer-headed": "npx cypress run --spec 'cypress/e2e/features/Parabank/transferFunds.cy.js' --browser chrome --headed",
+    "parabank-transfer-headless": "npx cypress run --spec 'cypress/e2e/features/Parabank/transferFunds.cy.js'",
+
+    "parabank-request-loan-headed": "npx cypress run --spec 'cypress/e2e/features/Parabank/requestLoan.cy.js' --browser chrome --headed",
+    "parabank-request-loan-headless": "npx cypress run --spec 'cypress/e2e/features/Parabank/requestLoan.cy.js'",
+
+    "parabank-find-transaction-headed": "npx cypress run --spec 'cypress/e2e/features/Parabank/findTransaction.cy.js' --browser chrome --headed",
+    "parabank-find-transaction-headless": "npx cypress run --spec 'cypress/e2e/features/Parabank/findTransaction.cy.js'",
+
+    "parabank-account-overview-headed": "npx cypress run --spec 'cypress/e2e/features/Parabank/accountOverview.cy.js' --browser chrome --headed",
+    "parabank-account-overview-headless": "npx cypress run --spec 'cypress/e2e/features/Parabank/accountOverview.cy.js'"
+
     
   },
   "repository": {
