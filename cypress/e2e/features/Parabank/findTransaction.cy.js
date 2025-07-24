@@ -31,6 +31,7 @@ describe('Find Transaction Suite', { testIsolation: false }, () => {
 
             // Optional: submit the search form if there's a search button
             cy.get('#findById').should('not.be.disabled').click();
+            cy.takescreenshot('Find Transaction - By ID');
         });
     })
     it('Verify Find Transaction by Date Successfully in correct format', () => {
@@ -55,6 +56,7 @@ describe('Find Transaction Suite', { testIsolation: false }, () => {
 
             // Optional: submit the search form if there's a search button
             cy.get('#findByDate').should('not.be.disabled').click();
+            cy.takescreenshot('Find Transaction - By Date');
 
             // Optional: verify results
             cy.get('table').should('contain', extractedText);
@@ -98,6 +100,7 @@ describe('Find Transaction Suite', { testIsolation: false }, () => {
 
             // Click Find button
             cy.get('#findByDateRange').should('not.be.disabled').click();
+            cy.takescreenshot('Find Transaction - By Date Range');
 
             // Assert result
             cy.get('table').should('contain', extractedText);
@@ -130,6 +133,7 @@ describe('Find Transaction Suite', { testIsolation: false }, () => {
 
             // Optional: submit the search form if there's a search button
             cy.get('#findByAmount').should('not.be.disabled').click();
+            cy.takescreenshot('Find Transaction - By Amount');
 
             // Optional: verify results
             cy.get('table').should('contain', extractedAmount);
@@ -148,6 +152,7 @@ describe('Find Transaction Suite', { testIsolation: false }, () => {
 
         // Optional: submit the search form if there's a search button
         cy.get('#findByAmount').should('not.be.disabled').click();
+        cy.takescreenshot('Find Transaction - Invalid Amount Format');
         cy.get('#amountError').should('be.visible').and('contain', 'Invalid amount');
 
 

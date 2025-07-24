@@ -10,6 +10,7 @@ describe('Bill Pay Suite', { testIsolation: false }, () => {
     })
     it('Verify Bill Pay Successfully', () => {  
         cy.billPayInput();
+       
     })
     it('Should verify that it will not allow to pay with empty fields', () => {
         cy.get('#leftPanel > ul > :nth-child(4) > a').click(); // Click "Bill Pay"
@@ -26,6 +27,8 @@ describe('Bill Pay Suite', { testIsolation: false }, () => {
         cy.get('#validationModel-account-empty').should('contain', 'Account number is required.');
         cy.get('#validationModel-verifyAccount-empty').should('contain', 'Account number is required.');
         cy.get('#validationModel-amount-empty').should('contain', 'The amount cannot be empty.');
+
+        cy.takeScreenshot('Bill Pay - Empty Fields Validation');
     })
 
     it('Should verify the account number mismatch', () => {
@@ -52,6 +55,7 @@ describe('Bill Pay Suite', { testIsolation: false }, () => {
             const account = $fromAccount.val();
             cy.get(':nth-child(13) > :nth-child(2) > .input').select(account);
             cy.get(':nth-child(14) > :nth-child(2) > .button').should('be.visible').click();
+            cy.takeScreenshot('Bill Pay - Mismatched Account Numbers');
 
             // ✅ Assertions after submission
             cy.get('#validationModel-verifyAccount-mismatch').should('contain', 'The account numbers do not match.');
@@ -82,6 +86,7 @@ describe('Bill Pay Suite', { testIsolation: false }, () => {
             const account = $fromAccount.val();
             cy.get(':nth-child(13) > :nth-child(2) > .input').select(account);
             cy.get(':nth-child(14) > :nth-child(2) > .button').should('be.visible').click();
+            cy.takeScreenshot('Bill Pay - Invalid Amount Format');
 
             // ✅ Assertions after submission
            cy.get('#validationModel-amount-invalid').should('contain', 'Please enter a valid amount.');

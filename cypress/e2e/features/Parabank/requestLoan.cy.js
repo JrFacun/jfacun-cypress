@@ -38,9 +38,10 @@ describe('Request Loan Suite', { testIsolation: false }, () => {
                 const randomOption = Cypress._.sample(options.toArray());
                 cy.get('#fromAccountId').select(randomOption.value);
             });
-
+            cy.takeScreenshot('Request Loan - Filled Inputs');
             // Submit the loan request
             cy.get('[colspan="2"] > .button').click();
+            cy.takeScreenshot('Request Loan - Submission Result Approved');
 
             cy.get('#requestLoanResult > .title').should('contain', 'Loan Request Processed');
             cy.get('.form > tbody > :nth-child(1) > [align="right"] > b').should('contain', 'Loan Provider');
@@ -87,7 +88,7 @@ describe('Request Loan Suite', { testIsolation: false }, () => {
 
             // Submit the loan request
             cy.get('[colspan="2"] > .button').click();
-
+            cy.takeScreenshot('Request Loan - Submission Result Denied');
             cy.get('#requestLoanResult > .title').should('contain', 'Loan Request Processed');
             cy.get('.form > tbody > :nth-child(1) > [align="right"] > b').should('contain', 'Loan Provider');
             cy.get('.form > tbody > :nth-child(2) > [align="right"] > b').should('contain', 'Date');

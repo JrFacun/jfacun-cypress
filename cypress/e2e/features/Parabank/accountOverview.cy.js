@@ -33,9 +33,11 @@ describe('Account Overview', { testIsolation: false }, () => {
         //Total
         cy.get(':nth-child(2) > b').should('be.visible');
         cy.get('tfoot > tr > td').should('contain', '*Balance includes deposits that may be subject to holds');
+
+        cy.takeScreenshot('Account Overview - Initial Load');
     })
 
-    it.only('Verify if Account details is visible', () => {
+    it('Verify if Account details is visible', () => {
         cy.url().should('include', '/register.htm');
 
         cy.openNewAccount();
@@ -53,9 +55,11 @@ describe('Account Overview', { testIsolation: false }, () => {
         cy.takeScreenshot('Account Overview - Account Details');
 
         acctOverview.verifyAccountOverviewPage();
+        cy.takeScreenshot('Account Overview - Account Details Verified');
         acctOverview.verifyAccountFormFieldsAndDropdowns();
         acctOverview.TransactionTableRows();
         acctOverview.verifyTransactionDetails();
+        cy.takeScreenshot('Account Overview - Transaction Details Verified');
 
     })
 })

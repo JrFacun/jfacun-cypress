@@ -35,9 +35,10 @@ describe('Transfer Funds', { testIsolation: false }, () => {
       cy.get('#toAccountId option').then(($toOptions) => {
         toAccount = $toOptions.eq(1).val();
         cy.get('#toAccountId').select(toAccount);
-
+        cy.takeScreenshot('Transfer Funds - Filled Inputs');
         // Submit transfer
         cy.get(':nth-child(4) > .button').should('be.visible').click();
+        cy.takeScreenshot('Transfer Funds - Submission Result');
 
         //Verify Transfer Result inside this same closure
         cy.get('#showResult > .title').should('contain', 'Transfer Complete!');
@@ -66,11 +67,12 @@ describe('Transfer Funds', { testIsolation: false }, () => {
       const account = $fromAccount.val();
       cy.get('#fromAccountId').select(account);
       cy.get('#toAccountId').select(account);
-
+      cy.takeScreenshot('Transfer Funds - Invalid Format');
       cy.get(':nth-child(4) > .button').should('be.visible').click();
 
-      // Verify validation message
+      // Verify validation message  
       cy.get('#showError > .error').should('contain', 'An internal error has occurred and has been logged.');
+      cy.takeScreenshot('Transfer Funds - Invalid Format Error');
     });
   })
 

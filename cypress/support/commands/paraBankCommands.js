@@ -64,6 +64,8 @@ Cypress.Commands.add('billPayInput', () => {
         cy.get(':nth-child(11) > [align="right"] > b').should('contain', 'Amount: $');
 
         cy.get(':nth-child(13) > [align="right"] > b').should('contain', 'From account #:');
+
+        cy.takeScreenshot('Bill Pay - Initial Load');
   // Set test data
   const payeeName = billPayInput.payeeName;
   const address = billPayInput.address;
@@ -96,11 +98,12 @@ Cypress.Commands.add('billPayInput', () => {
   cy.get(':nth-child(13) > :nth-child(2) > .input').then(($fromAccount) => {
     const account = $fromAccount.val();
     cy.get(':nth-child(13) > :nth-child(2) > .input').select(account);
+    cy.takeScreenshot('Bill Pay - Filled Inputs');
     cy.get(':nth-child(14) > :nth-child(2) > .button').should('be.visible').click();
 
     // ✅ Assertions after submission
     cy.get('#billpayResult > .title').should('contain', 'Bill Payment Complete');
-
+    cy.takeScreenshot('Bill Pay - Submission Result');
     // Check result values match inputs
     cy.get('#payeeName').should('contain', payeeName);
     cy.get('#amount').should('contain', amount.toString());
