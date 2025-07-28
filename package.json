@@ -29,9 +29,10 @@
     "parabank-find-transaction-headless": "npx cypress run --spec 'cypress/e2e/features/Parabank/findTransaction.cy.js'",
 
     "parabank-account-overview-headed": "npx cypress run --spec 'cypress/e2e/features/Parabank/accountOverview.cy.js' --browser chrome --headed",
-    "parabank-account-overview-headless": "npx cypress run --spec 'cypress/e2e/features/Parabank/accountOverview.cy.js'"
+    "parabank-account-overview-headless": "npx cypress run --spec 'cypress/e2e/features/Parabank/accountOverview.cy.js'",
 
-    
+    "userAPI-headed": "npx cypress run --spec 'cypress/e2e/api-testing/userAPI.cy.js' --browser chrome --headed",
+    "userAPI-headless": "npx cypress run --spec 'cypress/e2e/api-testing/userAPI.cy.js'"
   },
   "repository": {
     "type": "git",

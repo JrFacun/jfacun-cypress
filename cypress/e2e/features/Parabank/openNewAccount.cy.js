@@ -37,7 +37,8 @@ describe('Open New Account', { testIsolation: false }, () => {
         // cy.get('thead > tr > :nth-child(4)').should('contain', 'Credit (+)');'
 
         acctOverview.verifyAccountFormFieldsAndDropdowns();
-        acctOverview.validateTransactionTableRows();
+        acctOverview.verifyTransactionDetailsPage();
+        acctOverview.getTransactionTableRows();
 
         //TRANSACTION DETAILS
         cy.takeScreenshot('Open New Account - Transaction Details');

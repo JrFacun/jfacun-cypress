@@ -5,7 +5,7 @@ describe('Request Loan Suite', { testIsolation: false }, () => {
         // Visit the registration page before each test
         cy.visit('https://parabank.parasoft.com/parabank/register.htm');
         cy.registerUser();
-
+        cy.openNewAccount();
     })
 
     it('Verify Request Loan Approved', () => {

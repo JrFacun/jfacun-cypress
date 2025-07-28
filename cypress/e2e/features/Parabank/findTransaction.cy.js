@@ -152,7 +152,7 @@ describe('Find Transaction Suite', { testIsolation: false }, () => {
 
         // Optional: submit the search form if there's a search button
         cy.get('#findByAmount').should('not.be.disabled').click();
-        cy.takescreenshot('Find Transaction - Invalid Amount Format');
+        cy.takeScreenshot('Find Transaction - Invalid Amount Format');
         cy.get('#amountError').should('be.visible').and('contain', 'Invalid amount');
 
 

@@ -1,0 +1,22 @@
+[
+  {
+    "id": 2001,
+    "username": "fixtureUser1",
+    "firstName": "Fixture",
+    "lastName": "One",
+    "email": "fixture1@example.com",
+    "password": "password1",
+    "phone": "0911111111",
+    "userStatus": 1
+  },
+  {
+    "id": 2002,
+    "username": "fixtureUser2",
+    "firstName": "Fixture",
+    "lastName": "Two",
+    "email": "fixture2@example.com",
+    "password": "password2",
+    "phone": "0922222222",
+    "userStatus": 1
+  }
+]
