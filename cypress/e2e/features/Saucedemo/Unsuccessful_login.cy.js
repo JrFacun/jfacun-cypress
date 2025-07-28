@@ -22,7 +22,7 @@ describe('Successful Login Test Suite', () =>{
     cy.get(':nth-child(3) > .oxd-input-group > .oxd-input-group__label-wrapper > .oxd-label').should('contain', 'Password');
     cy.get(':nth-child(3) > .oxd-input-group > :nth-child(2) > .oxd-input').should('be.visible');
     cy.get('.oxd-button').should('be.visible');
-    cy.get('.orangehrm-login-forgot > .oxd-text').should('contain', 'Forgot your password?');
+    cy.get('.orangehrm-login-forgot > .oxd-text').should('contain', 'Forgot Your Password?');
     cy.get('.orangehrm-copyright-wrapper > :nth-child(1)').should('contain','OrangeHRM OS 5.7');
     cy.get('.orangehrm-login-footer-sm').should('be.visible');
 
