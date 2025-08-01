@@ -5,7 +5,7 @@ describe('User API Tests', () => {
   it('should create a new user successfully', () => {
     const newUser = generateUser();
 
-    cy.request({
+    cy.api({
       method: 'POST',
       url: 'https://petstore.swagger.io/v2/user',
       body: newUser,
@@ -25,7 +25,7 @@ describe('User API Tests', () => {
       generateUser()
     ];
 
-    cy.request({
+    cy.api({
       method: 'POST',
       url: 'https://petstore.swagger.io/v2/user/createWithList',
       body: users,
@@ -39,7 +39,7 @@ describe('User API Tests', () => {
   });
   it('should create multiple users using createWithArray endpoint', () => {
     cy.fixture('usersAPI').then((users) => {
-      cy.request({
+      cy.api({
         method: 'POST',
         url: 'https://petstore.swagger.io/v2/user/createWithArray',
         body: users,
@@ -55,7 +55,7 @@ describe('User API Tests', () => {
   });
 
   it('should GET - log in the user successfully and return a session token', () => {
-    cy.request({
+    cy.api({
       method: 'GET',
       url: 'https://petstore.swagger.io/v2/user/login?username=sample&password=123456',
     }).then((response) => {
@@ -69,7 +69,7 @@ describe('User API Tests', () => {
   it('Should return 404 when attempting to GET user data with invalid username in the URL', () => {
     const invalidUsername = 'invalidUser123';
 
-    cy.request({
+    cy.api({
       method: 'GET',
       url: `https://petstore.swagger.io/v2/user/${invalidUsername}`,
       failOnStatusCode: false,
@@ -87,7 +87,7 @@ describe('User API Tests', () => {
   it('should retrieve an existing user and return 200', () => {
     const username = 'string';
 
-    cy.request({
+    cy.api({
       method: 'GET',
       url: `https://petstore.swagger.io/v2/user/${username}`,
       failOnStatusCode: false
@@ -101,7 +101,7 @@ describe('User API Tests', () => {
   it('should return 404 for non-existing user', () => {
     const nonExistingUser = 'thisUserDoesNotExist123';
 
-    cy.request({
+    cy.api({
       method: 'GET',
       url: `https://petstore.swagger.io/v2/user/${nonExistingUser}`,
       failOnStatusCode: false
@@ -113,7 +113,7 @@ describe('User API Tests', () => {
   });
 
   it('should log out the user successfully', () => {
-    cy.request('https://petstore.swagger.io/v2/user/logout')
+    cy.api('https://petstore.swagger.io/v2/user/logout')
       .then((response) => {
         cy.log('Logout Response:', JSON.stringify(response.body));
         expect(response.status).to.eq(200);
@@ -123,7 +123,7 @@ describe('User API Tests', () => {
 
   it('should return 404 when trying to delete a non-existent or not-logged-in user', () => {
     const usernameToDelete = 'nonexistentuser';
-    cy.request({
+    cy.api({
       method: 'DELETE',
       url: `https://petstore.swagger.io/v2/user/${usernameToDelete}`,
       failOnStatusCode: false
@@ -138,7 +138,7 @@ describe('User API Tests', () => {
     const updatedUser = generateUser();
     updatedUser.username = username;
 
-    cy.request({
+    cy.api({
       method: 'PUT',
       url: `https://petstore.swagger.io/v2/user/${username}`,
       body: updatedUser,
@@ -152,9 +152,9 @@ describe('User API Tests', () => {
     });
   });
 
-  it('should handle a simulated 400 Bad Request error', () => {
+  it('should handle a simulated 400 Bad api error', () => {
 
-    cy.request({
+    cy.api({
       method: 'POST',
       url: 'https://petstore.swagger.io/v2/user',
       body: 'invalid-body-should-be-object-not-string', 

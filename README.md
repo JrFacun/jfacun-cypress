@@ -103,6 +103,10 @@ npm run parabank-find-transaction-headless
 # Parabank Account Overview
 npm run parabank-account-overview-headless
 
+# Pet Swagger API
+npm run userAPI-headless
+
+
 
 ### 🖥️ Headed Mode
 
@@ -134,6 +138,9 @@ npm run parabank-find-transaction-headed
 
 # Parabank Account Overview (headed mode)
 npm run parabank-account-overview-headed
+
+# Pet Swagger API (headed mode)
+npm run userAPI-headed
 
 
 ---

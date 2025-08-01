@@ -16,3 +16,4 @@
 // Import commands.js using ES2015 syntax:
 import './commands';
 import './commands/paraBankCommands';
+import 'cypress-plugin-api';
