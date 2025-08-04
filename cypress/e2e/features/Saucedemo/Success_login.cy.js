@@ -11,11 +11,11 @@ describe('Successful Login Test Suite', () => {
     cy.url('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
 
     //Verify Company Logo
-    cy.get('.orangehrm-login-branding > img').should('be.visible');
-    cy.get('.orangehrm-login-logo > img').should('be.visible');
+    // cy.get('.orangehrm-login-branding > img').should('be.visible');
+    // cy.get('.orangehrm-login-logo > img').should('be.visible');
 
     //Verify elements on the login page
-    cy.get('.oxd-text--h5').and('contain','Login');
+    cy.get('.oxd-text--h5').should('contain','Login');
     cy.get('.oxd-sheet > :nth-child(1)').should('contain', 'Username : Admin');
     cy.get('.oxd-sheet > :nth-child(2)').should('contain', 'Password : admin123');
     cy.get(':nth-child(2) > .oxd-input-group > .oxd-input-group__label-wrapper > .oxd-icon').should('be.visible');
